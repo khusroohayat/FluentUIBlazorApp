@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35209.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentUIBlazorApp", "FluentUIBlazorApp\FluentUIBlazorApp\FluentUIBlazorApp.csproj", "{0432AC0F-0627-4C4F-AC0E-F5AFB0D30F42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentUIBlazorApp.Client", "FluentUIBlazorApp\FluentUIBlazorApp.Client\FluentUIBlazorApp.Client.csproj", "{B75BDA23-2C39-483A-8121-E59DB42DD1CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0432AC0F-0627-4C4F-AC0E-F5AFB0D30F42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0432AC0F-0627-4C4F-AC0E-F5AFB0D30F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0432AC0F-0627-4C4F-AC0E-F5AFB0D30F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0432AC0F-0627-4C4F-AC0E-F5AFB0D30F42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B75BDA23-2C39-483A-8121-E59DB42DD1CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B75BDA23-2C39-483A-8121-E59DB42DD1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B75BDA23-2C39-483A-8121-E59DB42DD1CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B75BDA23-2C39-483A-8121-E59DB42DD1CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D630F3EF-DAE9-4269-8C2C-22B01DB00F2A}
+	EndGlobalSection
+EndGlobal
