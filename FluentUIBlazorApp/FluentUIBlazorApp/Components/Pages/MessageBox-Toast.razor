@@ -1,0 +1,43 @@
+﻿@page "/message-box-toast"
+@inject IDialogService DialogService
+@inject IToastService ToastService
+
+<FluentIcon Value="@(new Icons.Regular.Size24.Add())" />
+<FluentIcon Value="@(new Icons.Regular.Size24.Accessibility())" />
+<FluentIcon Value="@(new Icons.Regular.Size24.AddCircle())" />
+<FluentIcon Value="@(new Icons.Regular.Size24.Airplane())" />
+<FluentIcon Value="@(new Icons.Regular.Size24.Alert())" />
+<FluentIcon Value="@(new Icons.Regular.Size24.AlignRight())" />
+<FluentIcon Value="@(new Icons.Regular.Size24.BinFull())" />
+
+<FluentStack Style="margin-top: 10px;">
+    <FluentButton OnClick="@ShowSuccessAsync" Appearance="Appearance.Accent">Success</FluentButton>
+    <FluentButton OnClick="@ShowWarningAsync" Appearance="Appearance.Accent">Warning</FluentButton>
+</FluentStack>
+
+<FluentStack Style="margin-top: 10px;">
+    <FluentButton @onclick="@ShowToast" Appearance="Appearance.Accent">Open</FluentButton>
+</FluentStack>
+
+@code {
+    // call ShowSuccessAsync method
+    private async void ShowSuccessAsync()
+    {
+        // call dialog
+        await DialogService.ShowSuccessAsync("The action was a success");
+    }
+
+    // call ShowWarningAsync
+    private async void ShowWarningAsync()
+    {
+        // call dialog
+        await DialogService.ShowWarningAsync("The action was a warning");
+    }
+
+    // call showToast
+    private void ShowToast()
+    {
+        // call toast
+        ToastService.ShowToast(ToastIntent.Success, "The action was a toast", 4000);
+    }
+}
