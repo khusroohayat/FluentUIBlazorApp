@@ -1,0 +1,160 @@
+﻿@page "/menu"
+
+<h3>Menu</h3>
+
+<p>Click this button to open a Menu.</p>
+<FluentButton id="btnOpen1" Appearance="Appearance.Accent" @onclick="@(() => open = !open)">
+    Open menu
+</FluentButton>
+
+<FluentMenu Anchor="btnOpen1" @bind-Open="open" @onmenuchange="OnFirstMenuChange"  VerticalThreshold="170">
+    <FluentMenuItem>
+        Menu item 1
+    </FluentMenuItem>
+    <FluentMenuItem 
+                    Checked="true">
+        Menu item 2 Checked
+    </FluentMenuItem>
+    <FluentMenuItem 
+                    Disabled="true">
+        Menu item 3 Disabled
+    </FluentMenuItem>
+    <FluentMenuItem >
+        <span slot="start"><FluentIcon Value="@(new Icons.Regular.Size24.ClipboardPaste())" Color="Color.Neutral" Slot="start" /></span>
+        Menu item 4 with Icon
+    </FluentMenuItem>
+</FluentMenu>
+
+<p>@menuStatus</p>
+
+@code {
+    bool open = false;
+    private string menuStatus = "";
+
+    private void OnFirstMenuChange(MenuChangeEventArgs args)
+    {
+        if (args is not null && args.Value is not null)
+            menuStatus = $"Item \"{args.Value}\" clicked";
+    }
+}
+
+<FluentNavLink Tooltip="Item 4 tooltip">Item 4</FluentNavLink>
+
+<FluentAccordion Class="mt-2" ExpandMode="AccordionExpandMode.Single">
+    <FluentAccordionItem Heading="Panel one">
+        Panel one content
+    </FluentAccordionItem>
+    <FluentAccordionItem Heading="Panel two">
+        Panel two content
+    </FluentAccordionItem>
+    <FluentAccordionItem Heading="Panel three">
+        Panel three content
+    </FluentAccordionItem>
+</FluentAccordion>
+
+<div id="myId4" class="demopanel">
+    Right-click on this text <br />
+    to open a Context Menu.
+</div>
+
+<FluentMenu Anchor="myId4" Trigger="MouseButton.Right" Anchored="false" @onmenuchange=OnMenuChange>
+    <FluentMenuItem Label="Item 1" />
+
+    <FluentMenuItem Label="Item 2">
+        <MenuItems>
+            <FluentMenuItem Label="Item 2.1">
+                <MenuItems>
+                    <FluentMenuItem Label="Item 2.1.1" />
+                    <FluentMenuItem Label="Item 2.1.2"  />
+                </MenuItems>
+            </FluentMenuItem>
+            <FluentMenuItem Label="Item 2.2" />
+        </MenuItems>
+    </FluentMenuItem>
+
+    <FluentMenuItem Label="Item 3"  />
+</FluentMenu>
+
+<p>@status</p>
+
+@code {
+
+    private string status = "";
+
+    private void OnMenuChange(MenuChangeEventArgs args)
+    {
+        if (args is not null && args.Value is not null)
+            status = $"Item \"{args.Value}\" clicked";
+    }
+}
+
+<h2>Navigation Examples</h2>
+
+<FluentStack Orientation="Orientation.Horizontal">
+    <div style="background: var(--neutral-layer-3); display: flex; padding: 10px;">
+        <FluentNavMenu @bind-Expanded="@expanded" Width="250" Title="Custom navigation menu">
+            <FluentNavLink Icon="@(new Icons.Regular.Size20.Home())" Href="/" Match="NavLinkMatch.All">Home</FluentNavLink>
+            <FluentNavLink Href="/NavMenu">Item 2</FluentNavLink>
+            <FluentNavGroup OnClick="OnClick" Title="Item 3" Icon="@(new Icons.Regular.Size20.EarthLeaf())">
+                <TitleTemplate><h3>Item 3</h3></TitleTemplate>
+                <ChildContent>
+                    <FluentNavLink OnClick="OnClick" Icon="@(new Icons.Regular.Size20.LeafOne())">Item 3.1</FluentNavLink>
+                    <FluentNavLink OnClick="OnClick" Icon="@(new Icons.Regular.Size20.LeafTwo())">Item 3.2</FluentNavLink>
+                </ChildContent>
+            </FluentNavGroup>
+            <FluentNavLink Icon="@(new Icons.Regular.Size20.CalendarAgenda())" Disabled="true" Href="https://microsoft.com">Item 4</FluentNavLink>
+            <FluentNavLink Icon="@(new Icons.Regular.Size20.Home())" Disabled="true">Item 5</FluentNavLink>
+            <FluentNavGroup Expanded="true" Title="Item 6 Item 6 Item 6 Item 6 Item 6" Icon="@(new Icons.Regular.Size20.EarthLeaf())">
+                <FluentNavLink Icon="@(new Icons.Regular.Size20.LeafOne())">Item 6.1</FluentNavLink>
+                <FluentNavLink Icon="@(new Icons.Regular.Size20.LeafTwo())">Item 6.2</FluentNavLink>
+                <FluentNavGroup Expanded="true" Title="Item 6.3" Icon="@(new Icons.Regular.Size20.EarthLeaf())">
+                    <FluentNavLink Icon="@(new Icons.Regular.Size20.LeafOne())">Item 6.3.1 Item 6.3.1 Item 6.3.1</FluentNavLink>
+                    <FluentNavLink Icon="@(new Icons.Regular.Size20.LeafTwo())">Item 6.3.2</FluentNavLink>
+                    <FluentNavGroup Expanded="true" Title="Item 6.3.3 Item 6.3.3 Item 6.3.3" Icon="@(new Icons.Regular.Size20.EarthLeaf())">
+                        <FluentNavLink Icon="@(new Icons.Regular.Size20.LeafOne())">Item 6.3.3.1</FluentNavLink>
+                        <FluentNavLink Disabled="true" Icon="@(new Icons.Regular.Size20.LeafTwo())">Item 6.3.3.2</FluentNavLink>
+                        <FluentNavGroup Disabled="true" Expanded="true" Title="Item 6.3.3.3" Icon="@(new Icons.Regular.Size20.EarthLeaf())">
+                            <FluentNavLink Icon="@(new Icons.Regular.Size20.LeafOne())">Item 6.3.3.3.1</FluentNavLink>
+                            <FluentNavLink Icon="@(new Icons.Regular.Size20.LeafTwo())">Item 6.3.3.3.2</FluentNavLink>
+                        </FluentNavGroup>
+                    </FluentNavGroup>
+                </FluentNavGroup>
+            </FluentNavGroup>
+        </FluentNavMenu>
+    </div>
+
+    @code
+    {
+        bool expanded = true;
+    }
+
+    <!-- Menu with icons -->
+    <FluentNavMenu>
+        <FluentNavLink OnClick="OnClick" Icon="@(new Icons.Regular.Size24.Home())">Item 1</FluentNavLink>
+        <FluentNavLink OnClick="OnClick">Item 2</FluentNavLink>
+        <FluentNavLink OnClick="OnClick" Icon="@(new Icons.Regular.Size24.LeafOne())">Item 3</FluentNavLink>
+        <FluentNavLink OnClick="OnClick">Item 4</FluentNavLink>
+    </FluentNavMenu>
+
+    <!-- Menu simple -->
+    <FluentNavMenu>
+        <FluentNavLink OnClick="OnClick">Item 1</FluentNavLink>
+        <FluentNavLink OnClick="OnClick">Item 2</FluentNavLink>
+        <FluentNavLink OnClick="OnClick">Item 3</FluentNavLink>
+        <FluentNavLink OnClick="OnClick">Item 4</FluentNavLink>
+    </FluentNavMenu>
+
+</FluentStack>
+@code
+{
+    void OnClick(MouseEventArgs e)
+    {
+        Console.WriteLine("NavMenu item clicked");
+    }
+}
+
+
+
+@code {
+
+}
