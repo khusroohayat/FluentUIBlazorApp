@@ -1,0 +1,36 @@
+﻿@page "/progress"
+
+<h3>Progress</h3>
+
+<FluentBreadcrumb>
+    <FluentBreadcrumbItem Href="#">
+        Breadcrumb item 1
+        <FluentIcon Value="@(new Icons.Regular.Size20.ChevronDoubleRight())" Color="@Color.Neutral" Slot="separator" />
+    </FluentBreadcrumbItem>
+    <FluentBreadcrumbItem Href="#">
+        Breadcrumb item 2
+        <FluentIcon Value="@(new Icons.Regular.Size20.ChevronDoubleRight())" Color="@Color.Neutral" Slot="separator" />
+    </FluentBreadcrumbItem>
+    <FluentBreadcrumbItem>Breadcrumb item 3</FluentBreadcrumbItem>
+</FluentBreadcrumb>
+
+<br />
+<FluentButton Id="myFirstButton">Tooltip at the top</FluentButton>
+
+<FluentTooltip Anchor="myFirstButton" Position="@TooltipPosition.Bottom" Delay="2000">
+    Hello World <br />
+    It is a <i>small</i> tooltip.
+</FluentTooltip>
+
+<div style="width: 300px; display: grid; grid-gap: 12px; grid-auto-flow: column;">
+    <FluentProgress Min="0" Max="100" Value="75"></FluentProgress>
+    <FluentProgress></FluentProgress>
+    <FluentProgressRing></FluentProgressRing>
+</div>
+
+<FluentBadge Appearance="@Appearance.Accent">
+    Accent
+</FluentBadge>
+
+@code {
+}
